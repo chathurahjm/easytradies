@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeSuite;
 
 public class Setup {
 
+
     public static WebDriver driver;
     LoginPageObjects LoginObj;
 
