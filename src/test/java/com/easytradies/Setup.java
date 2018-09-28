@@ -64,7 +64,13 @@ public class Setup {
     {
         System.setProperty("webdriver.chrome.driver","C:\\Driver\\2.41.0\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("https://easytradies.com/sign-in-employee");
+        //driver.get("https://easytradies.com/sign-in-employee");
+        driver.get("https://easytradies.com");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
      @BeforeSuite
