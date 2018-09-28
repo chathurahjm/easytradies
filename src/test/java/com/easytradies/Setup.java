@@ -49,6 +49,7 @@ public class Setup {
         }
         catch(InterruptedException ie){
         }
+
     }
 
      public void InitDriver()
