@@ -21,6 +21,7 @@ public class EmployerSignUpObjects {
     public @FindBy(id = "tos")WebElement tandc;
 
     public @FindBy(css="a.btn.btn-login")WebElement SignUp;
+    public @FindBy(css="a.btn.btn-login")WebElement SignIn;
 
     public @FindBy(id = "FirstName")WebElement FirstName;
 

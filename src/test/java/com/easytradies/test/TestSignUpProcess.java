@@ -1,17 +1,9 @@
 package com.easytradies.test;
-import com.easytradies.DBInit;
 import com.easytradies.Setup;
-import com.easytradies.page.ContractorSignUpObjects;
-import com.easytradies.page.DashBoardObjects;
-import com.easytradies.page.EmployerSignUpObjects;
+import com.easytradies.page.*;
 
-import com.easytradies.page.LoginPageObjects;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoDatabase;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,7 +23,8 @@ public class TestSignUpProcess extends Setup{
     WebDriverWait wait;
     EmployerSignUpObjects ESignUpObj;
     ContractorSignUpObjects CSingnUpObj;
-    ContractorSignUpObjects CSingnUpObj2;
+    AdminPageObjects adminObj;
+    EmployeDashboardObjects creatTeamObj;
 
     @BeforeClass
     public  static void ClassInitialization()
@@ -102,14 +95,66 @@ public class TestSignUpProcess extends Setup{
 
         verifyEmail(emailIDEMP);
 
+        //3 is for employees
+        AdminApprove(3);
 
 
     }
 
     @Test
-    public void ValidateAdminApproveEmployee()
+    public void CreateTeamByEmp()
     {
-        driver.get("https://www.mailinator.com");
+        Test = Extent.startTest("Validate Success Employee Create Teams");
+        creatTeamObj = new EmployeDashboardObjects(driver);
+        creatTeamObj.CreateTeam();
+
+    }
+
+
+    public void AdminApprove(int SideMenuID)
+    {
+        driver.get("http://52.39.200.93:8000");
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException ie){
+        }
+
+        adminObj = new AdminPageObjects(driver);
+        adminObj.Email.sendKeys("admin@easytradies.co.nz");
+        adminObj.Password.sendKeys("Janitha@1234");
+        adminObj.login.click();
+
+        try{
+            Thread.sleep(8000);
+        }
+        catch(InterruptedException ie){
+        }
+        adminObj.sideMenuItems.get(SideMenuID).click();
+
+        try{
+            Thread.sleep(8000);
+        }
+        catch(InterruptedException ie){
+        }
+        adminObj.sortButton.get(0).click();
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ie){
+        }
+        adminObj.sortButton.get(0).click();
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ie){
+        }
+
+        adminObj.greenBttn.get(1).click();
+
+
+
     }
 
     @Test
@@ -182,6 +227,9 @@ public class TestSignUpProcess extends Setup{
 
         verifyEmail(emailIDCON);
 
+        //2 is for sidemenu contractors
+        AdminApprove(2);
+
 
     }
 
@@ -193,40 +241,40 @@ public class TestSignUpProcess extends Setup{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    CSingnUpObj = new ContractorSignUpObjects(driver);
-    CSingnUpObj.inboxfield.sendKeys(email);
-    CSingnUpObj.go.click();
+        CSingnUpObj = new ContractorSignUpObjects(driver);
+        CSingnUpObj.inboxfield.sendKeys(email);
+        CSingnUpObj.go.click();
 
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-    CSingnUpObj.emailList.get(3).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        CSingnUpObj.emailList.get(3).click();
 
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-   // CSingnUpObj2 = new ContractorSignUpObjects(driver);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+       // CSingnUpObj2 = new ContractorSignUpObjects(driver);
 
-    driver.switchTo().frame("msg_body");
+        driver.switchTo().frame("msg_body");
 
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-    String EmailURL = (CSingnUpObj.button_link.getAttribute("href"));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String EmailURL = (CSingnUpObj.button_link.getAttribute("href"));
 
-    driver.get(EmailURL);
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-    String aa = CSingnUpObj.successTxt.getText();
+        driver.get(EmailURL);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String aa = CSingnUpObj.successTxt.getText();
 
     }
 
