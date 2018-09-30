@@ -41,7 +41,7 @@ public class EmployerSignUpObjects {
 
     public @FindBy(id = "PostalCode")WebElement PostalCode;
 
-    public @FindBy(css = "ia.btn.btn-login")WebElement Save;
+    public @FindBy(css = "a.btn.btn-login")WebElement Save;
 
     public EmployerSignUpObjects(WebDriver driver)
     {

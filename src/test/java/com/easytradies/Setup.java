@@ -4,14 +4,20 @@ import com.easytradies.page.LoginPageObjects;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.*;
 import com.relevantcodes.extentreports.ExtentTest;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.HasInputDevices;
+import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Setup {
 
@@ -22,6 +28,7 @@ public class Setup {
     public static  ExtentReports Extent;
     public static  ExtentTest Test ;
     public static ITestContext TestContext;
+    public String emailIDEMP ="emp"+System.currentTimeMillis();
 
     public  void UserLogin(String Username,String Password)
     {
@@ -43,6 +50,26 @@ public class Setup {
         LoginObj = new LoginPageObjects(driver);
         LoginObj.Live_UserNameTxtBx.sendKeys(Username);
         LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
+        LoginObj.Live_signupEmployeeBtn.click();
+
+        try{
+            Thread.sleep(6000);
+        }
+        catch(InterruptedException ie){
+        }
+
+    }
+    public  void ContractorLogin(String Username,String Password)
+    {
+        WaitForLoginPageToLoad();
+        LoginObj = new LoginPageObjects(driver);
+        LoginObj.Live_UserNameTxtBx.sendKeys(Username);
+        LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
+        try{
+            Thread.sleep(6000);
+        }
+        catch(InterruptedException ie){
+        }
         LoginObj.Live_signupEmployeeBtn.click();
 
         try{
@@ -110,6 +137,25 @@ public class Setup {
         }*/
 
 
+    }
+
+    public void closeTab()
+    {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+
+        robot.keyPress(java.awt.event.KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_W);
+        robot.keyRelease(java.awt.event.KeyEvent.VK_CONTROL);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

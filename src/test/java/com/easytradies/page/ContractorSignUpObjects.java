@@ -58,6 +58,11 @@ public class ContractorSignUpObjects {
     public @FindBy(tagName = "li")
     List<WebElement> emailList ;
 
+    public @FindBy(className = "table-responsive")
+    WebElement Emailtable;
+
+
+
     public @FindBy(className = "button_link")
     WebElement button_link ;
 

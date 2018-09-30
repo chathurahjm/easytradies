@@ -3,7 +3,9 @@ import com.easytradies.Setup;
 import com.easytradies.page.*;
 
 import com.relevantcodes.extentreports.LogStatus;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +16,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -25,7 +28,7 @@ public class TestSignUpProcess extends Setup{
     ContractorSignUpObjects CSingnUpObj;
     AdminPageObjects adminObj;
     EmployeDashboardObjects creatTeamObj;
-
+    //String emailIDEMP ="contract"+System.currentTimeMillis() ;
     @BeforeClass
     public  static void ClassInitialization()
     {
@@ -50,10 +53,12 @@ public class TestSignUpProcess extends Setup{
 
     }
 
+
     @org.testng.annotations.Test
-    public void ValidateSuccessUserSignUpProcess()
+    public void ValidateSuccessUserEmp(String email)
     {
         Test = Extent.startTest("Validate Success User Sign Up Process");
+        email = emailIDEMP;
 
         ESignUpObj = new EmployerSignUpObjects(driver);
         ESignUpObj.EmpSignUp.get(1).click();
@@ -62,8 +67,8 @@ public class TestSignUpProcess extends Setup{
         }
         catch(InterruptedException ie){
         }
-        String emailIDEMP ="contract"+System.currentTimeMillis() ;
-        ESignUpObj.Email.sendKeys(emailIDEMP+"@mailinator.com");
+
+        ESignUpObj.Email.sendKeys(email+"@mailinator.com");
         ESignUpObj.Password.sendKeys("test123");
 
         ESignUpObj.tandc.click();
@@ -78,13 +83,28 @@ public class TestSignUpProcess extends Setup{
         ESignUpObj = new EmployerSignUpObjects(driver);
         ESignUpObj.FirstName.sendKeys("Employer1");
         ESignUpObj.LastName.sendKeys("Employer Last");
+        try{
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException ie){
+        }
         ESignUpObj.CompanyName.sendKeys("Homeland");
         ESignUpObj.PriConName.sendKeys("Sue");
+        try{
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException ie){
+        }
         ESignUpObj.ContactNo.sendKeys("0210101121");
         ESignUpObj.Street.sendKeys("11/21");
         ESignUpObj.Suburb.sendKeys("One Tree Hill");
         ESignUpObj.City.sendKeys("Auckland");
         ESignUpObj.PostalCode.sendKeys("1010");
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ie){
+        }
         ESignUpObj.Save.click();
 
         try{
@@ -93,7 +113,7 @@ public class TestSignUpProcess extends Setup{
         catch(InterruptedException ie){
         }
 
-        verifyEmail(emailIDEMP);
+        verifyEmail(email);
 
         //3 is for employees
         AdminApprove(3);
@@ -101,14 +121,6 @@ public class TestSignUpProcess extends Setup{
 
     }
 
-    @Test
-    public void CreateTeamByEmp()
-    {
-        Test = Extent.startTest("Validate Success Employee Create Teams");
-        creatTeamObj = new EmployeDashboardObjects(driver);
-        creatTeamObj.CreateTeam();
-
-    }
 
 
     public void AdminApprove(int SideMenuID)
@@ -145,14 +157,19 @@ public class TestSignUpProcess extends Setup{
         catch(InterruptedException ie){
         }
         adminObj.sortButton.get(0).click();
+        driver.manage().window().maximize();
         try{
             Thread.sleep(4000);
         }
         catch(InterruptedException ie){
         }
 
-        adminObj.greenBttn.get(1).click();
-
+        adminObj.greenBttn.get(0).click();
+        try{
+            Thread.sleep(8000);
+        }
+        catch(InterruptedException ie){
+        }
 
 
     }
@@ -250,7 +267,10 @@ public class TestSignUpProcess extends Setup{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        CSingnUpObj.emailList.get(3).click();
+
+        List<WebElement> elm = CSingnUpObj.Emailtable.findElements(By.tagName("tr"));
+        elm.get(1).click();
+        //CSingnUpObj.emailList.get(3).click();
 
         try {
             Thread.sleep(5000);

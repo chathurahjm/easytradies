@@ -45,4 +45,24 @@ public class TestEmpDashboard  extends Setup{
         empDash.AddCreditCard();
 
     }
+
+    @Test
+    public void CreateTeamByEmp()
+    {
+        Test = Extent.startTest("Validate Success Employee Create Teams");
+        EmployeDashboardObjects creatTeamObj = new EmployeDashboardObjects(driver);
+        creatTeamObj.Login("es");
+        creatTeamObj.CreateTeam();
+
+    }
+
+    @Test
+    public void ValidateApproveAContractorForATeam() {
+        Test = Extent.startTest("Validate approve contractor for a team");
+        EmployeDashboardObjects emp = new EmployeDashboardObjects(driver);
+        emp.Login("es");
+        emp.EmployeeApproveContractor();
+
+
+    }
 }
