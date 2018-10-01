@@ -157,7 +157,7 @@ public class ContractorDashBoardObjects {
         catch(InterruptedException ie){
         }
 
-        TopLayerOfRejectBttn.sc
+        TopLayerOfRejectBttn.
     }
     public void  LogOff()
     {
