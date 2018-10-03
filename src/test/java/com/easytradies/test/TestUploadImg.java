@@ -2,6 +2,7 @@ package com.easytradies.test;
 
 import com.easytradies.Setup;
 import com.easytradies.page.DashBoardObjects;
+import com.easytradies.page.LoginPageObjects;
 import com.easytradies.page.UploadImgObjects;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,8 +31,10 @@ public class TestUploadImg extends  Setup{
     @Test
     public void Validate_Employee_Upload_Image()
     {
-        Setup set = new Setup();
-        set.UserLoginLive_Employee("nayumih@me.com","test123");
+        driver.get("https://easytradies.com/sign-in-employee");
+        LoginPageObjects login = new LoginPageObjects(driver);
+        login.UserLogin("nayumih@me.com","test123");
+
         UpImgObj = new UploadImgObjects(driver);
 
         UpImgObj.ClickOnMyDetails();

@@ -43,48 +43,49 @@ public class Setup {
         catch(InterruptedException ie){
         }
     }
+//
+//    public  void UserLoginLive_Employee1(String Username,String Password)
+//    {
+//        WaitForLoginPageToLoad1();
+//        LoginObj = new LoginPageObjects(driver);
+//        LoginObj.Live_UserNameTxtBx.sendKeys(Username);
+//        LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
+//        LoginObj.Live_signupEmployeeBtn.click();
+//
+//        try{
+//            Thread.sleep(6000);
+//        }
+//        catch(InterruptedException ie){
+//        }
+//
+//    }
+//    public  void ContractorLogin1(String Username,String Password)
+//    {
+//        WaitForLoginPageToLoad();
+//        LoginObj = new LoginPageObjects(driver);
+//        LoginObj.Live_UserNameTxtBx.sendKeys(Username);
+//        LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
+//        try{
+//            Thread.sleep(6000);
+//        }
+//        catch(InterruptedException ie){
+//        }
+//        LoginObj.Live_signupEmployeeBtn.click();
+//
+//        try{
+//            Thread.sleep(6000);
+//        }
+//        catch(InterruptedException ie){
+//        }
+//
+//    }
 
-    public  void UserLoginLive_Employee(String Username,String Password)
-    {
-        WaitForLoginPageToLoad();
-        LoginObj = new LoginPageObjects(driver);
-        LoginObj.Live_UserNameTxtBx.sendKeys(Username);
-        LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
-        LoginObj.Live_signupEmployeeBtn.click();
-
-        try{
-            Thread.sleep(6000);
-        }
-        catch(InterruptedException ie){
-        }
-
-    }
-    public  void ContractorLogin(String Username,String Password)
-    {
-        WaitForLoginPageToLoad();
-        LoginObj = new LoginPageObjects(driver);
-        LoginObj.Live_UserNameTxtBx.sendKeys(Username);
-        LoginObj.Live_PassWordNameTxtBx.sendKeys(Password);
-        try{
-            Thread.sleep(6000);
-        }
-        catch(InterruptedException ie){
-        }
-        LoginObj.Live_signupEmployeeBtn.click();
-
-        try{
-            Thread.sleep(6000);
-        }
-        catch(InterruptedException ie){
-        }
-
-    }
 
      public void InitDriver()
      {
          System.setProperty("webdriver.chrome.driver","C:\\Driver\\2.41.0\\chromedriver.exe");
          driver = new ChromeDriver();
-         driver.get("http://52.39.200.93:8000");
+         //driver.get("http://52.39.200.93:8000");
      }
 
     public void InitDriverLive()
@@ -117,27 +118,27 @@ public class Setup {
         Extent.close();
     }
 
-    public void WaitForLoginPageToLoad() {
-        LoginObj = new LoginPageObjects(driver);
-
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement element = wait .until(ExpectedConditions.visibilityOf(LoginObj.Live_UserNameTxtBx));
-
-       /* if (LoginObj.UserNameTxtBx.isDisplayed()!=true)
-        {
-            String aa="asd";
-        }
-        else {
-            try {
-                Thread.sleep(3000);
-            }
-            catch(InterruptedException e) {
-                WaitForLoginPageToLoad();
-            }
-        }*/
-
-
-    }
+//    public void WaitForLoginPageToLoad1() {
+//        LoginObj = new LoginPageObjects(driver);
+//
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        WebElement element = wait .until(ExpectedConditions.visibilityOf(LoginObj.Live_UserNameTxtBx));
+//
+//       /* if (LoginObj.UserNameTxtBx.isDisplayed()!=true)
+//        {
+//            String aa="asd";
+//        }
+//        else {
+//            try {
+//                Thread.sleep(3000);
+//            }
+//            catch(InterruptedException e) {
+//                WaitForLoginPageToLoad();
+//            }
+//        }*/
+//
+//
+//    }
 
     public void closeTab()
     {

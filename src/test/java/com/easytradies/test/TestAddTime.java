@@ -3,6 +3,7 @@ package com.easytradies.test;
 import com.easytradies.Setup;
 import com.easytradies.page.ContractorDashBoardObjects;
 import com.easytradies.page.EmployeDashboardObjects;
+import com.easytradies.page.LoginPageObjects;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.HasInputDevices;
@@ -57,9 +58,9 @@ public class TestAddTime extends Setup {
 
 
         //SignUp.ValidateSuccessContractorSignUpProcess();
-        Setup sup = new Setup();
+        LoginPageObjects login = new LoginPageObjects(driver);
         driver.get("https://easytradies.com/sign-in-employee");
-        sup.ContractorLogin("contract1538299779494@mailinator.com","test123");
+        login.UserLogin("contract1538299779494@mailinator.com","test123");
         ContractorDashBoardObjects conDash = new ContractorDashBoardObjects(driver);
         //conDash.AddAccountInfo();
         //conDash.ApplyForTeam();
@@ -74,7 +75,7 @@ public class TestAddTime extends Setup {
 
 
         driver.get("https://easytradies.com/sign-in-employee");
-        sup.ContractorLogin("contract1538299779494@mailinator.com","test123");
+        login.UserLogin("contract1538299779494@mailinator.com","test123");
         conDash.AddTime();
         conDash.LogOff();
 
@@ -83,7 +84,7 @@ public class TestAddTime extends Setup {
         conDash.LogOff();
 
         driver.get("https://easytradies.com/sign-in-employee");
-        sup.ContractorLogin("contract1538299779494@mailinator.com","test123");
+        login.UserLogin("contract1538299779494@mailinator.com","test123");
 
 
 

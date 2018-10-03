@@ -116,61 +116,24 @@ public class TestSignUpProcess extends Setup{
         verifyEmail(email);
 
         //3 is for employees
-        AdminApprove(3);
-
+        AdminApproveUser(3);
 
     }
 
 
 
-    public void AdminApprove(int SideMenuID)
+    public void AdminApproveUser(int sideMenuIndex)
     {
         driver.get("http://52.39.200.93:8000");
-
-        try{
-            Thread.sleep(5000);
-        }
-        catch(InterruptedException ie){
-        }
-
-        adminObj = new AdminPageObjects(driver);
-        adminObj.Email.sendKeys("admin@easytradies.co.nz");
-        adminObj.Password.sendKeys("Janitha@1234");
-        adminObj.login.click();
+        AdminPageObjects admin  = new AdminPageObjects(driver);
+        admin.AdminLogin();
+        admin.UserApprove(sideMenuIndex);
 
         try{
             Thread.sleep(8000);
         }
         catch(InterruptedException ie){
         }
-        adminObj.sideMenuItems.get(SideMenuID).click();
-
-        try{
-            Thread.sleep(8000);
-        }
-        catch(InterruptedException ie){
-        }
-        adminObj.sortButton.get(0).click();
-        try{
-            Thread.sleep(4000);
-        }
-        catch(InterruptedException ie){
-        }
-        adminObj.sortButton.get(0).click();
-        driver.manage().window().maximize();
-        try{
-            Thread.sleep(4000);
-        }
-        catch(InterruptedException ie){
-        }
-
-        adminObj.greenBttn.get(0).click();
-        try{
-            Thread.sleep(8000);
-        }
-        catch(InterruptedException ie){
-        }
-
 
     }
 
@@ -241,11 +204,10 @@ public class TestSignUpProcess extends Setup{
 
         assertTrue(CSingnUpObj.alertMsg.getText().contains("Congratulations on creating an account"));
 
-
         verifyEmail(emailIDCON);
 
         //2 is for sidemenu contractors
-        AdminApprove(2);
+        AdminApproveUser(2);
 
 
     }

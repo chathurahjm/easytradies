@@ -34,12 +34,51 @@ public class AdminPageObjects {
     public @FindBy(css = "button.ui.green.button")
     List<WebElement> greenBttn;
 
+    public void AdminLogin() {
+        try {
+            Thread.sleep(5000);
 
+        }
+        catch (InterruptedException ie) {
+        }
 
+        Email.sendKeys("admin@easytradies.co.nz");
+        Password.sendKeys("Janitha@1234");
+        login.click();
 
+    }
 
+    public void UserApprove(int SideMenuID)
+    {
+        sideMenuItems.get(SideMenuID).click();
 
+        try{
+            Thread.sleep(8000);
+        }
+        catch(InterruptedException ie){
+        }
+        sortButton.get(0).click();
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ie){
+        }
+        sortButton.get(0).click();
+        driver.manage().window().maximize();
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ie){
+        }
 
+        greenBttn.get(0).click();
+        try{
+            Thread.sleep(8000);
+        }
+        catch(InterruptedException ie){
+        }
+
+    }
 
 
 }
