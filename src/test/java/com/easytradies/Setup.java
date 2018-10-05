@@ -29,6 +29,7 @@ public class Setup {
     public static  ExtentTest Test ;
     public static ITestContext TestContext;
     public String emailIDEMP ="emp"+System.currentTimeMillis();
+    public String emailIDCON ="con"+System.currentTimeMillis();
 
     public  void UserLogin(String Username,String Password)
     {

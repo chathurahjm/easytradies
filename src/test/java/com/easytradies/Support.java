@@ -1,17 +1,19 @@
 package com.easytradies;
 import com.mongodb.*;
 import com.mongodb.client.MongoDatabase;
+import org.testng.annotations.Test;
 
 
 import java.util.Arrays;
 
 
-public class DBInit {
+public class Support {
 
+    @Test
     public void Updatecontractor(){
 
-        MongoClient client = new MongoClient(new MongoClientURI("mongodb://easy_admin:test1234@ds153851.mlab.com:53851"));
-        DB database = client.getDB("etv2live");
+        MongoClient client = new MongoClient(new MongoClientURI("mongodb://admin:polkmn09@ds050869.mlab.com:50869"));
+        DB database = client.getDB("easytrades");
         DBCollection collection = database.getCollection("employees");
 
         // Created with Studio 3T, the IDE for MongoDB - https://studio3t.com/
