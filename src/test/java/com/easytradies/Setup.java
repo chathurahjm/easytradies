@@ -30,6 +30,9 @@ public class Setup {
     public static ITestContext TestContext;
     public String emailIDEMP ="emp"+System.currentTimeMillis();
     public String emailIDCON ="con"+System.currentTimeMillis();
+    public  String BaseURL = "https://www.etprelive.com";
+    public String signInContractorURL = BaseURL+"/sign-in-employee";
+    public String signInEmployerURL =BaseURL+"/sign-in-employer";
 
     public  void UserLogin(String Username,String Password)
     {
@@ -94,7 +97,7 @@ public class Setup {
         System.setProperty("webdriver.chrome.driver","C:\\Driver\\2.41.0\\chromedriver.exe");
         driver = new ChromeDriver();
         //driver.get("https://easytradies.com/sign-in-employee");
-        driver.get("https://easytradies.com");
+        driver.get(BaseURL);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

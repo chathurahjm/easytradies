@@ -16,6 +16,8 @@ import org.testng.annotations.Test;
 
 public class TestAddTime extends Setup {
 
+    //public String signInEmployeeURL = "https://www.etprelive.com/sign-in-employee";
+
     @BeforeClass
     public  static void ClassInitialization()
     {
@@ -43,6 +45,8 @@ public class TestAddTime extends Setup {
     @org.testng.annotations.Test
     public void ValidateAdminAccept30MinReduction()
     {
+
+
         String empEmail=emailIDEMP;
         String actualEmailEmp = empEmail+"@mailinator.com";
 
@@ -59,7 +63,7 @@ public class TestAddTime extends Setup {
 
         //SignUp.ValidateSuccessContractorSignUpProcess();
         LoginPageObjects login = new LoginPageObjects(driver);
-        driver.get("https://easytradies.com/sign-in-employee");
+        driver.get(signInContractorURL);
         login.UserLogin("contract1538299779494@mailinator.com","test123");
         ContractorDashBoardObjects conDash = new ContractorDashBoardObjects(driver);
         //conDash.AddAccountInfo();
@@ -74,7 +78,7 @@ public class TestAddTime extends Setup {
         conDash.LogOff();
 
 
-        driver.get("https://easytradies.com/sign-in-employee");
+        driver.get(signInContractorURL);
         login.UserLogin("contract1538299779494@mailinator.com","test123");
         conDash.AddTime();
         conDash.LogOff();
@@ -83,7 +87,7 @@ public class TestAddTime extends Setup {
         empDash.changeToOrdinary();
         conDash.LogOff();
 
-        driver.get("https://easytradies.com/sign-in-employee");
+        driver.get(signInContractorURL);
         login.UserLogin("contract1538299779494@mailinator.com","test123");
 
 

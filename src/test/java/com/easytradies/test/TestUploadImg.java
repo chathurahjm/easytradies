@@ -31,7 +31,7 @@ public class TestUploadImg extends  Setup{
     @Test
     public void Validate_Employee_Upload_Image()
     {
-        driver.get("https://easytradies.com/sign-in-employee");
+        driver.get("https://www.etprelive.com/sign-in-employee");
         LoginPageObjects login = new LoginPageObjects(driver);
         login.UserLogin("nayumih@me.com","test123");
 

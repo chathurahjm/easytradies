@@ -1,5 +1,6 @@
 package com.easytradies.page;
 
+import com.easytradies.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,7 @@ import java.awt.datatransfer.StringSelection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class EmployeDashboardObjects {
+public class EmployeDashboardObjects extends  Setup{
 
     WebDriver driver;
     public EmployeDashboardObjects(WebDriver driver)
@@ -105,7 +106,7 @@ public class EmployeDashboardObjects {
 
 
     public void Login(String userID){
-        driver.get("https://easytradies.com/sign-in-employer");
+        driver.get(signInEmployerURL);
 
         try{
             Thread.sleep(8000);
